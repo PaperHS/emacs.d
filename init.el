@@ -89,7 +89,7 @@
 (require 'init-csv)
 (require 'init-erlang)
 (require 'init-javascript)
-(require 'init-php)
+;;(require 'init-php)
 (require 'init-org)
 (require 'init-nxml)
 (require 'init-html)
@@ -108,15 +108,15 @@
 (require 'init-yaml)
 (require 'init-docker)
 (require 'init-terraform)
-(require 'init-go)
+;;(require 'init-go)
 ;;(require 'init-nix)
 (maybe-require-package 'nginx-mode)
 
 (require 'init-paredit)
 (require 'init-lisp)
 (require 'init-slime)
-(require 'init-clojure)
-(require 'init-clojure-cider)
+;;(require 'init-clojure)
+;;(require 'init-clojure-cider)
 (require 'init-common-lisp)
 
 (when *spell-check-support-enabled*
@@ -171,7 +171,7 @@
 ;; Allow users to provide an optional "init-local" containing personal settings
 ;;----------------------------------------------------------------------------
 (require 'init-local nil t)
-
+;;(require 'cnfonts)
 
 
 (provide 'init)
