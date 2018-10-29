@@ -24,6 +24,7 @@
       ;; Force SSL for GNU ELPA
       (setcdr (assoc "gnu" package-archives) "http://elpa.emacs-china.org/gnu/"))))
 
+
 ;; We include the org repository for completeness, but don't normally
 ;; use it.
 (add-to-list 'package-archives '("org" . "http://elpa.emacs-china.org/org/"))
