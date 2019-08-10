@@ -35,6 +35,11 @@
 
 
 
+;; Work-around for https://debbugs.gnu.org/cgi/bugreport.cgi?bug=34341
+(when (version= "26.2" emacs-version)
+  (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
+
+
 ;;; On-demand installation of packages
 
 (require 'cl-lib)
