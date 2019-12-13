@@ -177,7 +177,7 @@
 ;;----------------------------------------------------------------------------
 (require 'init-local nil t)
 ;;(require 'cnfonts)
-
+(require 'godot-gdscript)
 
 (provide 'init)
 
