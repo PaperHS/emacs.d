@@ -144,11 +144,51 @@ typical word processor."
 (global-set-key (kbd "C-c c") 'org-capture)
 
 (setq org-capture-templates
-      `(("t" "todo" entry (file "")  ; "" => `org-default-notes-file'
+      `(("t" "todo" entry (file "~/Nutstore/Notes/todo.org")  ; "" => `org-default-notes-file'
          "* NEXT %?\n%U\n" :clock-resume t)
-        ("n" "note" entry (file "")
-         "* %? :NOTE:\n%U\n%a\n" :clock-resume t)
+        ("n" "note" entry (file "~/Nutstore/Notes/note.org")
+         "* %? :NOTE:\n%U\n%a\n  \n:PROPERTIES:\n:ANKI_DECK: Note\n:ANKI_NOTE_TYPE: Basic (and reversed card)\n:ANKI_TAGS:\n:END:\n** Front\n ** Back\n" :clock-resume t)
+        ("j" "tech" entry (file "~/Nutstore/Notes/tech.org")
+         ,(concat "* %^{Logg} "
+                  "%(flet ((org-get-tags-string () \":TECH:\")) (org-set-tags))"
+                  " :TECH:\n%?")
+         :clock-resume t
+         :prepend t
+         :empty-line 1
+         )
+        ("i" "idea" entry (file "~/Nutstore/Notes/idea.org")
+         "* %? :IDEA:\n%U\n%a\n" :clock-resume t)
+        ("r" "read" entry (file "~/Nutstore/Notes/read.org")
+         "* %? :READ:\n%U\n%a\n" :clock-resume t)
         ))
+
+
+;; agenda 里面时间块彩色显示
+;; From: https://emacs-china.org/t/org-agenda/8679/3
+(defun ljg/org-agenda-time-grid-spacing ()
+  "Set different line spacing w.r.t. time duration."
+  (save-excursion
+    (let* ((background (alist-get 'background-mode (frame-parameters)))
+           (background-dark-p (string= background "dark"))
+           (colors (list "#1ABC9C" "#2ECC71" "#3498DB" "#9966ff"))
+           pos
+           duration)
+      (nconc colors colors)
+      (goto-char (point-min))
+      (while (setq pos (next-single-property-change (point) 'duration))
+        (goto-char pos)
+        (when (and (not (equal pos (point-at-eol)))
+                   (setq duration (org-get-at-bol 'duration)))
+          (let ((line-height (if (< duration 30) 1.0 (+ 0.5 (/ duration 60))))
+                (ov (make-overlay (point-at-bol) (1+ (point-at-eol)))))
+            (overlay-put ov 'face `(:background ,(car colors)
+                                                :foreground
+                                                ,(if background-dark-p "black" "white")))
+            (setq colors (cdr colors))
+            (overlay-put ov 'line-height line-height)
+            (overlay-put ov 'line-spacing (1- line-height))))))))
+
+(add-hook 'org-agenda-finalize-hook #'ljg/org-agenda-time-grid-spacing)
 
 
 
@@ -358,7 +398,18 @@ typical word processor."
 
 
 
+;;; pretty
+;; 打开 org-indent mode
+(setq org-startup-indented t)
 
+;; 设置 bullet list
+
+;; (setq org-bullets-bullet-list '("" ""  "" ""))
+(setf org-todo-keyword-faces '(("TODO" . (:foreground "white" :background "#95A5A6"   :weight bold))
+                               ("HAND" . (:foreground "white" :background "#2E8B57"  :weight bold))
+                               ("DONE" . (:foreground "white" :background "#3498DB" :weight bold))))
+
+
 (require-package 'org-pomodoro)
 (setq org-pomodoro-keep-killed-pomodoro-time t)
 (after-load 'org-agenda
