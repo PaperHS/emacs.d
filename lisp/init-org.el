@@ -145,9 +145,11 @@ typical word processor."
 
 (setq org-capture-templates
       `(("t" "todo" entry (file "~/Nutstore/Notes/todo.org")  ; "" => `org-default-notes-file'
-         "* NEXT %?\n%U\n" :clock-resume t)
+         "* TODO %?\n%U\n" :clock-resume t)
         ("n" "note" entry (file "~/Nutstore/Notes/note.org")
          "* %? :NOTE:\n%U\n%a\n  \n:PROPERTIES:\n:ANKI_DECK: Note\n:ANKI_NOTE_TYPE: Basic (and reversed card)\n:ANKI_TAGS:\n:END:\n** Front\n ** Back\n" :clock-resume t)
+        ("c" "code" entry (file "~/Nutstore/Notes/code.org")
+         "* %? :CODE:\n%U\n%a\n  \n:PROPERTIES:\n:ANKI_DECK: code\n:ANKI_NOTE_TYPE: Basic (and reversed card)\n:ANKI_TAGS:\n:END:\n** Front\n ** Back\n" :clock-resume t)
         ("j" "tech" entry (file "~/Nutstore/Notes/tech.org")
          ,(concat "* %^{Logg} "
                   "%(flet ((org-get-tags-string () \":TECH:\")) (org-set-tags))"
@@ -157,10 +159,21 @@ typical word processor."
          :empty-line 1
          )
         ("i" "idea" entry (file "~/Nutstore/Notes/idea.org")
-         "* %? :IDEA:\n%U\n%a\n" :clock-resume t)
+         ,(concat "* %^{Logg} "
+                  "%(flet ((org-get-tags-string () \":IDEA:\")) (org-set-tags))"
+                  " :IDEA:\n%?")
+         :clock-resume t
+         :prepend t
+         :empty-line 1
+         )
         ("r" "read" entry (file "~/Nutstore/Notes/read.org")
-         "* %? :READ:\n%U\n%a\n" :clock-resume t)
-        ))
+         ,(concat "* %^{Logg} "
+                  "%(flet ((org-get-tags-string () \":READ:\")) (org-set-tags))"
+                  " :READ:\n%?")
+         :clock-resume t
+         :prepend t
+         :empty-line 1
+         )))
 
 
 ;; agenda 里面时间块彩色显示
