@@ -46,5 +46,6 @@
 
 
 
+
 (provide 'init-rust)
 ;;; init-rust.el ends here
