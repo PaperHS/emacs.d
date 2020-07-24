@@ -39,7 +39,7 @@
 (define-key sanityinc/org-global-prefix-map (kbd "o") 'org-clock-out)
 (define-key global-map (kbd "C-c o") sanityinc/org-global-prefix-map)
 
-
+(require 'org-tempo)
 ;; Various preferences
 (setq org-log-done t
       org-edit-timestamp-down-means-later t
@@ -112,23 +112,41 @@ typical word processor."
 
 (setq org-capture-templates
       `(("t" "todo" entry (file "~/Nutstore/Notes/todo.org")  ; "" => `org-default-notes-file'
-         "* NEXT %?\n%U\n" :clock-resume t)
+         "* TODO   %?\n%U\n" :clock-resume t)
         ("n" "note" entry (file "~/Nutstore/Notes/note.org")
-         "* %? :NOTE:\n%U\n%a\n  \n:PROPERTIES:\n:ANKI_DECK: Note\n:ANKI_NOTE_TYPE: Basic (and reversed card)\n:ANKI_TAGS:\n:END:\n** Front\n ** Back\n" :clock-resume t)
+         "* %? :NOTE:  \n%U\n%a\n  \n:PROPERTIES:\n:ANKI_DECK: Note\n:ANKI_NOTE_TYPE: Basic (and reversed card)\n:ANKI_TAGS:\n:END:\n** Front\n ** Back\n" :clock-resume t)
         ("j" "tech" entry (file "~/Nutstore/Notes/tech.org")
-         ,(concat "* %^{Logg} "
+         ,(concat "*  %^{Logg} "
                   "%(flet ((org-get-tags-string () \":TECH:\")) (org-set-tags))"
                   " :TECH:\n%?")
          :clock-resume t
          :prepend t
-         :empty-line 1
+         :Empty-line 1
          )
         ("i" "idea" entry (file "~/Nutstore/Notes/idea.org")
-         "* %? :IDEA:\n%U\n%a\n" :clock-resume t)
+         ,(concat "*  %^{Logg} "
+                  "%(flet ((org-get-tags-string () \":IDEA:\")) (org-set-tags))"
+                  " :IDEA:\n%?")
+         :clock-resume t
+         :prepend t
+         :empty-line 1
+         )
+        ("d" "dairy" entry (file "~/Nutstore/Notes/dairy.org")
+         ,(concat "*  %^{Logg} "
+                  "%T"
+                  "\n%?")
+         :clock-resume t
+         :prepend t
+         :empty-line 1
+         )
         ("r" "read" entry (file "~/Nutstore/Notes/read.org")
-         "* %? :READ:\n%U\n%a\n" :clock-resume t)
-        ))
-
+         ,(concat "*  %^{Logg} "
+                  "%(flet ((org-get-tags-string () \":READ:\")) (org-set-tags))"
+                  " :READ:\n%?")
+         :clock-resume t
+         :prepend t
+         :empty-line 1
+         )))
 
 ;; agenda 里面时间块彩色显示
 ;; From: https://emacs-china.org/t/org-agenda/8679/3
@@ -371,7 +389,7 @@ typical word processor."
 
 ;; 设置 bullet list
 
-;; (setq org-bullets-bullet-list '("" ""  "" ""))
+;; (setq org-bullets-bullet-list '(">" "" "" "" ))
 (setf org-todo-keyword-faces '(("TODO" . (:foreground "white" :background "#95A5A6"   :weight bold))
                                ("HAND" . (:foreground "white" :background "#2E8B57"  :weight bold))
                                ("DONE" . (:foreground "white" :background "#3498DB" :weight bold))))
@@ -388,7 +406,7 @@ typical word processor."
 ;;   (setq org-agenda-include-diary t
 ;;         org-agenda-custom-commands
 ;;         '(("I" "Import diary from iCal" agenda ""
-;;            ((org-agenda-mode-hook #'org-mac-iCal)))))
+;;            ((org-agenda-mode-hook #'∑)))))
 
 ;;   (add-hook 'org-agenda-cleanup-fancy-diary-hook
 ;;             (lambda ()
