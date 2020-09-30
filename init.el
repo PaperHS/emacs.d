@@ -15,7 +15,11 @@
 (when (version< emacs-version "25.1")
   (message "Your Emacs is old, and some functionality in this config will be disabled. Please upgrade if possible."))
 
+(setq package-check-signature nil)
+(setq byte-compile-warnings '(cl-functions))
+
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "lsp" user-emacs-directory))
 (require 'init-benchmarking) ;; Measure startup time
 
 (defconst *spell-check-support-enabled* nil) ;; Enable with t if you prefer
@@ -138,6 +142,8 @@
 ;; (require 'init-mu)
 (require 'init-ledger)
 ;; Extra packages which don't require any configuration
+
+(require 'init-lsp-dart)
 
 (require-package 'sudo-edit)
 (require-package 'gnuplot)

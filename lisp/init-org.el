@@ -388,8 +388,15 @@ typical word processor."
 (setq org-startup-indented t)
 
 ;; 设置 bullet
-;;(setq org-bullets-bullet-list '(">" "" "" "" ))
-(setq org-bullets-bullet-list '(" " " " " " " " ))
+(condition-case nil
+    (require 'org-bullets)
+  (file-error
+   (require 'package)
+   (package-install 'org-bullets)
+   (require 'use-package)))
+
+(setq org-bullets-bullet-list '(""  "" ">" ""))
+;; (setq org-bullets-bullet-list '(" " " " " " " " ))
 (set-face-attribute 'org-level-1 nil :height 200 :bold t)
 (set-face-attribute 'org-level-2 nil :height 180 :bold t)
 (set-face-attribute 'org-level-3 nil :height 160 :bold t)

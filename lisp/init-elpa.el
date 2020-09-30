@@ -34,9 +34,10 @@
 
 ;; We include the org repository for completeness, but don't normally
 ;; use it.
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+;; (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(add-to-list 'package-archives '("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/"))
 (add-to-list 'package-archives '("org" . "http://elpa.emacs-china.org/org/"))
-
+(add-to-list 'package-archives '("gun" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/"))
 
 ;; Work-around for https://debbugs.gnu.org/cgi/bugreport.cgi?bug=34341
 (when (and (version< emacs-version "26.3") (boundp 'libgnutls-version) (>= libgnutls-version 30604))
