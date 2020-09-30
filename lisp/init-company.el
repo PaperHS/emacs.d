@@ -10,7 +10,11 @@
 
 (when (maybe-require-package 'company)
   (add-hook 'after-init-hook 'global-company-mode)
+<<<<<<< HEAD
   (with-eval-after-load 'company
+=======
+  (after-load 'company
+>>>>>>> 8e1853cf37e70567e9132a56ea5999d935975d3a
     (dolist (backend '(company-eclim company-semantic))
       (delq backend company-backends))
     (diminish 'company-mode)
@@ -28,8 +32,13 @@
 
 ;; Suspend page-break-lines-mode while company menu is active
 ;; (see https://github.com/company-mode/company-mode/issues/416)
+<<<<<<< HEAD
 (with-eval-after-load 'company
   (with-eval-after-load 'page-break-lines
+=======
+(after-load 'company
+  (after-load 'page-break-lines
+>>>>>>> 8e1853cf37e70567e9132a56ea5999d935975d3a
     (defvar-local sanityinc/page-break-lines-on-p nil)
 
     (defun sanityinc/page-break-lines-disable (&rest ignore)

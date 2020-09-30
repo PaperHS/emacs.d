@@ -1,6 +1,17 @@
 ;;; init-utils.el --- Elisp helper functions and commands -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
+<<<<<<< HEAD
+=======
+
+(if (fboundp 'with-eval-after-load)
+    (defalias 'after-load 'with-eval-after-load)
+  (defmacro after-load (feature &rest body)
+    "After FEATURE is loaded, evaluate BODY."
+    (declare (indent defun))
+    `(eval-after-load ,feature
+       '(progn ,@body))))
+>>>>>>> 8e1853cf37e70567e9132a56ea5999d935975d3a
 
 (define-obsolete-function-alias 'after-load 'with-eval-after-load "")
 

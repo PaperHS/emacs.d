@@ -1,5 +1,6 @@
 ;;; init.el --- Load the full configuration -*- lexical-binding: t -*-
 ;;; Commentary:
+<<<<<<< HEAD
 
 ;; This file bootstraps the configuration, which is divided into
 ;; a number of other files.
@@ -8,6 +9,16 @@
 
 ;; Produce backtraces when errors occur: can be helpful to diagnose startup issues
 ;;(setq debug-on-error t)
+=======
+
+;; This file bootstraps the configuration, which is divided into
+;; a number of other files.
+
+;;; Code:
+
+;; Produce backtraces when errors occur
+(setq debug-on-error t)
+>>>>>>> 8e1853cf37e70567e9132a56ea5999d935975d3a
 
 (let ((minver "24.4"))
   (when (version< emacs-version minver)
@@ -115,8 +126,12 @@
 (require 'init-yaml)
 (require 'init-docker)
 (require 'init-terraform)
+<<<<<<< HEAD
 
 
+=======
+;;(require 'init-go)
+>>>>>>> 8e1853cf37e70567e9132a56ea5999d935975d3a
 ;;(require 'init-nix)
 ;;(require 'init-go)
 ;;(require 'init-nix)
@@ -201,6 +216,9 @@
 ;; no-byte-compile: t
 ;; End:
 ;;; init.el ends here
+<<<<<<< HEAD
 ;; ## added by OPAM user-setup for emacs / base ## 56ab50dc8996d2bb95e7856a6eddb17b ## you can edit, but keep this line
 (require 'opam-user-setup "~/.emacs.d/opam-user-setup.el")
 ;; ## end of OPAM user-setup addition for emacs / base ## keep this line
+=======
+>>>>>>> 8e1853cf37e70567e9132a56ea5999d935975d3a

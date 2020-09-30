@@ -37,7 +37,11 @@
 ;;; Ruby compilation
 (require-package 'ruby-compilation)
 
+<<<<<<< HEAD
 (with-eval-after-load 'ruby-mode
+=======
+(after-load 'ruby-mode
+>>>>>>> 8e1853cf37e70567e9132a56ea5999d935975d3a
   (define-key ruby-mode-map [S-f7] 'ruby-compilation-this-buffer)
   (define-key ruby-mode-map [f7] 'ruby-compilation-this-test))
 
@@ -50,9 +54,15 @@
 (when (maybe-require-package 'robe)
   (with-eval-after-load 'ruby-mode
     (add-hook 'ruby-mode-hook 'robe-mode))
+<<<<<<< HEAD
   (with-eval-after-load 'robe
     (with-eval-after-load 'company
       (add-to-list 'company-backends 'company-robe))))
+=======
+  (after-load 'robe
+    (after-load 'company
+      (push 'company-robe company-backends))))
+>>>>>>> 8e1853cf37e70567e9132a56ea5999d935975d3a
 
 
 

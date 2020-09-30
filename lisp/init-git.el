@@ -32,12 +32,21 @@
             (magit-log-buffer-file-popup)
           (magit-log-buffer-file t))
       (vc-print-log)))
+<<<<<<< HEAD
 
   (with-eval-after-load 'vc
     (define-key vc-prefix-map (kbd "l") 'sanityinc/magit-or-vc-log-file)))
 
 
 (with-eval-after-load 'magit
+=======
+
+  (after-load 'vc
+    (define-key vc-prefix-map (kbd "l") 'sanityinc/magit-or-vc-log-file)))
+
+
+(after-load 'magit
+>>>>>>> 8e1853cf37e70567e9132a56ea5999d935975d3a
   (define-key magit-status-mode-map (kbd "C-M-<up>") 'magit-section-up))
 
 (maybe-require-package 'magit-todos)

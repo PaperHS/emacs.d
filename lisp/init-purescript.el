@@ -11,7 +11,11 @@
 
   (add-hook 'purescript-mode-hook (apply-partially 'prettify-symbols-mode -1))
 
+<<<<<<< HEAD
   (with-eval-after-load 'purescript-mode
+=======
+  (after-load 'purescript-mode
+>>>>>>> 8e1853cf37e70567e9132a56ea5999d935975d3a
     (define-key purescript-mode-map (kbd "C-o") 'open-line))
 
   (when (maybe-require-package 'reformatter)
@@ -56,9 +60,15 @@ corresponding .purs file is open."
     (add-hook 'purescript-mode-hook 'inferior-psci-mode))
 
   (when (maybe-require-package 'add-node-modules-path)
+<<<<<<< HEAD
     (with-eval-after-load 'purescript-mode
       (add-hook 'purescript-mode-hook 'add-node-modules-path))
     (with-eval-after-load 'psci
+=======
+    (after-load 'purescript-mode
+      (add-hook 'purescript-mode-hook 'add-node-modules-path))
+    (after-load 'psci
+>>>>>>> 8e1853cf37e70567e9132a56ea5999d935975d3a
       (advice-add 'psci :around (lambda (oldfun &rest args)
                                   (let ((psci/purs-path (or (executable-find "purs")
                                                             psci/purs-path)))

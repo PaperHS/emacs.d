@@ -27,7 +27,11 @@
 (defvar sanityinc/last-compilation-buffer nil
   "The last buffer in which compilation took place.")
 
+<<<<<<< HEAD
 (with-eval-after-load 'compile
+=======
+(after-load 'compile
+>>>>>>> 8e1853cf37e70567e9132a56ea5999d935975d3a
   (defun sanityinc/save-compilation-buffer (&rest _)
     "Save the compilation buffer to find it later."
     (setq sanityinc/last-compilation-buffer next-error-last-buffer))

@@ -2,6 +2,10 @@
 ;;; Commentary:
 ;;; Code:
 
+<<<<<<< HEAD
+=======
+(require-package 'darcsum)
+>>>>>>> 8e1853cf37e70567e9132a56ea5999d935975d3a
 (require-package 'vc-darcs)
 
 

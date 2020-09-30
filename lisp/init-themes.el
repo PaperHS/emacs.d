@@ -42,6 +42,7 @@
 (when (maybe-require-package 'dimmer)
   (setq-default dimmer-fraction 0.15)
   (add-hook 'after-init-hook 'dimmer-mode)
+<<<<<<< HEAD
   (with-eval-after-load 'dimmer
     ;; TODO: file upstream as a PR
     (advice-add 'frame-set-background-mode :after (lambda (&rest args) (dimmer-process-all))))
@@ -52,6 +53,11 @@
     (defun sanityinc/display-non-graphic-p ()
       (not (display-graphic-p)))
     (add-to-list 'dimmer-exclusion-predicates 'sanityinc/display-non-graphic-p)))
+=======
+  ;; TODO: file upstream as a PR
+  (after-load 'dimmer
+    (advice-add 'frame-set-background-mode :after (lambda (&rest args) (dimmer-process-all)))))
+>>>>>>> 8e1853cf37e70567e9132a56ea5999d935975d3a
 
 
 (provide 'init-themes)

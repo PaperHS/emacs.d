@@ -41,6 +41,17 @@
   (if (memq this-command paredit-minibuffer-commands)
       (enable-paredit-mode)))
 
+<<<<<<< HEAD
+=======
+;; ----------------------------------------------------------------------------
+;; Enable some handy paredit functions in all prog modes
+;; ----------------------------------------------------------------------------
+
+(require-package 'paredit-everywhere)
+(after-load 'paredit-everywhere
+  (define-key paredit-everywhere-mode-map (kbd "M-s") nil))
+(add-hook 'prog-mode-hook 'paredit-everywhere-mode)
+>>>>>>> 8e1853cf37e70567e9132a56ea5999d935975d3a
 
 (provide 'init-paredit)
 ;;; init-paredit.el ends here

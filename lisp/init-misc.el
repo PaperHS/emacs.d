@@ -26,7 +26,11 @@
 
 
 (when (maybe-require-package 'info-colors)
+<<<<<<< HEAD
   (with-eval-after-load 'info
+=======
+  (after-load 'info
+>>>>>>> 8e1853cf37e70567e9132a56ea5999d935975d3a
     (add-hook 'Info-selection-hook 'info-colors-fontify-node)))
 
 

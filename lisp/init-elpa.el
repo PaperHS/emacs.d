@@ -15,6 +15,7 @@
 
 ;;; Standard package repositories
 
+<<<<<<< HEAD
 ;; (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
 ;;                     (not (gnutls-available-p))))
 ;;        (proto (if no-ssl "http" "https")))
@@ -38,6 +39,29 @@
 (add-to-list 'package-archives '("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/"))
 (add-to-list 'package-archives '("org" . "http://elpa.emacs-china.org/org/"))
 (add-to-list 'package-archives '("gun" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/"))
+=======
+(let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
+                    (not (gnutls-available-p))))
+       (proto (if no-ssl "http" "https")))
+  (add-to-list 'package-archives (cons "melpa" (concat proto "://elpa.emacs-china.org/melpa/")) t)
+  ;; Official MELPA Mirror, in case necessary.
+  ;;(add-to-list 'package-archives (cons "melpa-mirror" (concat proto "://www.mirrorservice.org/sites/melpa.org/packages/")) t)
+
+    (if (< emacs-major-version 24)
+  (
+      ;; For important compatibility libraries like cl-lib
+      (add-to-list 'package-archives '("gnu" . (concat proto "://elpa.emacs-china.org/gnu/")))
+    (unless no-ssl
+      ;; Force SSL for GNU ELPA
+      (setcdr (assoc "gnu" package-archives) "http://elpa.emacs-china.org/gnu/"))))
+
+)
+
+;; We include the org repository for completeness, but don't normally
+;; use it.
+(add-to-list 'package-archives '("org" . "http://elpa.emacs-china.org/org/"))
+
+>>>>>>> 8e1853cf37e70567e9132a56ea5999d935975d3a
 
 ;; Work-around for https://debbugs.gnu.org/cgi/bugreport.cgi?bug=34341
 (when (and (version< emacs-version "26.3") (boundp 'libgnutls-version) (>= libgnutls-version 30604))
@@ -107,8 +131,12 @@ locate PACKAGE."
 (fullframe list-packages quit-window)
 
 
+<<<<<<< HEAD
 (let ((package-check-signature nil))
   (require-package 'gnu-elpa-keyring-update))
+=======
+(require-package 'gnu-elpa-keyring-update)
+>>>>>>> 8e1853cf37e70567e9132a56ea5999d935975d3a
 
 
 (defun sanityinc/set-tabulated-list-column-width (col-name width)

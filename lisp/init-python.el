@@ -18,13 +18,18 @@
 (require-package 'pip-requirements)
 
 (when (maybe-require-package 'anaconda-mode)
+<<<<<<< HEAD
   (with-eval-after-load 'python
+=======
+  (after-load 'python
+>>>>>>> 8e1853cf37e70567e9132a56ea5999d935975d3a
     ;; Anaconda doesn't work on remote servers without some work, so
     ;; by default we enable it only when working locally.
     (add-hook 'python-mode-hook
               (lambda () (unless (file-remote-p default-directory)
                       (anaconda-mode 1))))
     (add-hook 'anaconda-mode-hook 'anaconda-eldoc-mode))
+<<<<<<< HEAD
   (with-eval-after-load 'anaconda-mode
     (define-key anaconda-mode-map (kbd "M-?") nil))
   (when (maybe-require-package 'company-anaconda)
@@ -34,6 +39,14 @@
 
 (when (maybe-require-package 'toml-mode)
   (add-to-list 'auto-mode-alist '("poetry\\.lock\\'" . toml-mode)))
+=======
+  (after-load 'anaconda-mode
+    (define-key anaconda-mode-map (kbd "M-?") nil))
+  (when (maybe-require-package 'company-anaconda)
+    (after-load 'company
+      (after-load 'python
+        (push 'company-anaconda company-backends)))))
+>>>>>>> 8e1853cf37e70567e9132a56ea5999d935975d3a
 
 (when (maybe-require-package 'reformatter)
   (reformatter-define black :program "black"))
