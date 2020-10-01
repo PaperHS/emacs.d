@@ -24,12 +24,7 @@
  ediff-split-window-function 'split-window-horizontally
  ediff-window-setup-function 'ediff-setup-windows-plain
  indent-tabs-mode nil
-<<<<<<< HEAD
- create-lockfiles nil
- auto-save-default nil
-=======
  tab-width 2
->>>>>>> 8e1853cf37e70567e9132a56ea5999d935975d3a
  make-backup-files nil
  mouse-yank-at-point t
  save-interprogram-paste-before-kill t
@@ -96,9 +91,6 @@
 (when (fboundp 'display-line-numbers-mode)
   (setq-default display-line-numbers-width 3)
   (add-hook 'prog-mode-hook 'display-line-numbers-mode))
-<<<<<<< HEAD
-=======
-
 (when (maybe-require-package 'goto-line-preview)
   (global-set-key [remap goto-line] 'goto-line-preview)
 
@@ -111,7 +103,6 @@
 
 (when (require-package 'rainbow-delimiters)
   (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
->>>>>>> 8e1853cf37e70567e9132a56ea5999d935975d3a
 
 (when (maybe-require-package 'goto-line-preview)
   (global-set-key [remap goto-line] 'goto-line-preview)
@@ -123,13 +114,7 @@
     (advice-add 'goto-line-preview :around #'sanityinc/with-display-line-numbers)))
 
 
-<<<<<<< HEAD
-(when (require-package 'rainbow-delimiters)
-  (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
-
-=======
->>>>>>> 8e1853cf37e70567e9132a56ea5999d935975d3a
 (when (maybe-require-package 'symbol-overlay)
   (dolist (hook '(prog-mode-hook html-mode-hook yaml-mode-hook conf-mode-hook))
     (add-hook hook 'symbol-overlay-mode))
@@ -271,11 +256,7 @@
 ;;----------------------------------------------------------------------------
 (require-package 'whole-line-or-region)
 (add-hook 'after-init-hook 'whole-line-or-region-global-mode)
-<<<<<<< HEAD
-(with-eval-after-load 'whole-line-or-region
-=======
 (after-load 'whole-line-or-region
->>>>>>> 8e1853cf37e70567e9132a56ea5999d935975d3a
   (diminish 'whole-line-or-region-local-mode))
 
 
@@ -297,11 +278,7 @@
     (advice-add 'cua--activate-rectangle :after
                 (lambda (&rest _)
                   (when (bound-and-true-p mode-name)
-<<<<<<< HEAD
-                    (add-to-list 'sanityinc/suspended-modes-during-cua-rect mode-name)
-=======
                     (push mode-name sanityinc/suspended-modes-during-cua-rect)
->>>>>>> 8e1853cf37e70567e9132a56ea5999d935975d3a
                     (funcall mode-name 0))))))
 
 (sanityinc/suspend-mode-during-cua-rect-selection 'whole-line-or-region-local-mode)

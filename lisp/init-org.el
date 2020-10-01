@@ -39,11 +39,6 @@
 (define-key sanityinc/org-global-prefix-map (kbd "o") 'org-clock-out)
 (define-key global-map (kbd "C-c o") sanityinc/org-global-prefix-map)
 
-<<<<<<< HEAD
-(require 'org-tempo)
-=======
-
->>>>>>> 8e1853cf37e70567e9132a56ea5999d935975d3a
 ;; Various preferences
 (setq org-log-done t
       org-edit-timestamp-down-means-later t
@@ -58,12 +53,6 @@
 
 ;; Lots of stuff from http://doc.norang.ca/org-mode.html
 
-<<<<<<< HEAD
-;; Re-align tags when window shape changes
-(with-eval-after-load 'org-agenda
-  (add-hook 'org-agenda-mode-hook
-            (lambda () (add-hook 'window-configuration-change-hook 'org-agenda-align-tags nil t))))
-=======
 ;; TODO: fail gracefully
 (defun sanityinc/grab-ditaa (url jar-name)
   "Download URL and extract JAR-NAME as `org-ditaa-jar-path'."
@@ -95,8 +84,6 @@
     (setq org-plantuml-jar-path (expand-file-name jar-name (file-name-directory user-init-file)))
     (unless (file-exists-p org-plantuml-jar-path)
       (url-copy-file url org-plantuml-jar-path))))
-
->>>>>>> 8e1853cf37e70567e9132a56ea5999d935975d3a
 
 ;; Re-align tags when window shape changes
 (after-load 'org-agenda
@@ -154,88 +141,76 @@ typical word processor."
 
 (global-set-key (kbd "C-c c") 'org-capture)
 
-(setq org-capture-templates
-      `(("t" "todo" entry (file "~/Nutstore/Notes/todo.org")  ; "" => `org-default-notes-file'
-<<<<<<< HEAD
-         "* TODO   %?\n%U\n" :clock-resume t)
-        ("n" "note" entry (file "~/Nutstore/Notes/note.org")
-         "* %? :NOTE:  \n%U\n%a\n  \n:PROPERTIES:\n:ANKI_DECK: Note\n:ANKI_NOTE_TYPE: Basic (and reversed card)\n:ANKI_TAGS:\n:END:\n** Front\n ** Back\n" :clock-resume t)
-        ("j" "tech" entry (file "~/Nutstore/Notes/tech.org")
-         ,(concat "*  %^{Logg} "
-=======
-         "* NEXT %?\n%U\n" :clock-resume t)
-        ("n" "note" entry (file "~/Nutstore/Notes/note.org")
-         "* %? :NOTE:\n%U\n%a\n  \n:PROPERTIES:\n:ANKI_DECK: Note\n:ANKI_NOTE_TYPE: Basic (and reversed card)\n:ANKI_TAGS:\n:END:\n** Front\n ** Back\n" :clock-resume t)
-        ("j" "tech" entry (file "~/Nutstore/Notes/tech.org")
-         ,(concat "* %^{Logg} "
->>>>>>> 8e1853cf37e70567e9132a56ea5999d935975d3a
-                  "%(flet ((org-get-tags-string () \":TECH:\")) (org-set-tags))"
-                  " :TECH:\n%?")
-         :clock-resume t
-         :prepend t
-<<<<<<< HEAD
-         :Empty-line 1
-         )
-        ("i" "idea" entry (file "~/Nutstore/Notes/idea.org")
-         ,(concat "*  %^{Logg} "
-                  "%(flet ((org-get-tags-string () \":IDEA:\")) (org-set-tags))"
-                  " :IDEA:\n%?")
-         :clock-resume t
-         :prepend t
-         :empty-line 1
-         )
-        ("d" "dairy" entry (file "~/Nutstore/Notes/dairy.org")
-         ,(concat "*  %^{Logg} "
-                  "%T"
-                  "\n%?")
-         :clock-resume t
-         :prepend t
-         :empty-line 1
-         )
-        ("r" "read" entry (file "~/Nutstore/Notes/read.org")
-         ,(concat "*  %^{Logg} "
-                  "%(flet ((org-get-tags-string () \":READ:\")) (org-set-tags))"
-                  " :READ:\n%?")
-         :clock-resume t
-         :prepend t
-         :empty-line 1
-         )))
+;; (setq org-capture-templates
+;;       `(("t" "todo" entry (file "~/Nutstore/Notes/todo.org")   "* TODO   %?\n%U\n" :clock-resume t)
+;;         ("n" "note" entry (file "~/Nutstore/Notes/note.org")   "* %? :NOTE:  \n%U\n%a\n  \n:PROPERTIES:\n:ANKI_DECK: Note\n:ANKI_NOTE_TYPE: Basic (and reversed card)\n:ANKI_TAGS:\n:END:\n** Front\n ** Back\n" :clock-resume t)
+;;         ("j" "tech" entry (file "~/Nutstore/Notes/tech.org")  ,(concat "*  %^{Logg} "                  "* NEXT %?\n%U\n" :clock-resume t)         ("n" "note" entry (file "~/Nutstore/Notes/note.org")          "* %? :NOTE:\n%U\n%a\n  \n:PROPERTIES:\n:ANKI_DECK: Note\n:ANKI_NOTE_TYPE: Basic (and reversed card)\n:ANKI_TAGS:\n:END:\n** Front\n ** Back\n" :clock-resume t)
+;;          ("j" "tech" entry (file "~/Nutstore/Notes/tech.org")          ,(concat "* %^{Logg} "                   "%(flet ((org-get-tags-string () \":TECH:\")) (org-set-tags))"                   " :TECH:\n%?")
+;;           :clock-resume t
+;;           :prepend t
+;;           :Empty-line 1
+;;           )
+;;          ("i" "idea" entry (file "~/Nutstore/Notes/idea.org")
+;;           ,(concat "*  %^{Logg} "
+;;                    "%(flet ((org-get-tags-string () \":IDEA:\")) (org-set-tags))"
+;;                    " :IDEA:\n%?")
+;;           :clock-resume t
+;;           :prepend t
+;;           :empty-line 1
+;;           )
+;;          ("d" "dairy" entry (file "~/Nutstore/Notes/dairy.org")
+;;           ,(concat "*  %^{Logg} "
+;;                    "%T"
+;;                    "\n%?")
+;;           :clock-resume t
+;;           :prepend t
+;;           :empty-line 1
+;;           )
+;;          ("r" "read" entry (file "~/Nutstore/Notes/read.org")
+;;           ,(concat "*  %^{Logg} "
+;;                    "%(flet ((org-get-tags-string () \":READ:\")) (org-set-tags))"
+;;                    " :READ:\n%?")
+;;           :clock-resume t
+;;           :prepend t
+;;           :empty-line 1
+;;           )))
 
-;; agenda 里面时间块彩色显示
-;; From: https://emacs-china.org/t/org-agenda/8679/3
-(defun ljg/org-agenda-time-grid-spacing ()
-  "Set different line spacing w.r.t. time duration."
-  (save-excursion
-    (let* ((background (alist-get 'background-mode (frame-parameters)))
-           (background-dark-p (string= background "dark"))
-           (colors (list "#1ABC9C" "#2ECC71" "#3498DB" "#9966ff"))
-           pos
-           duration)
-      (nconc colors colors)
-      (goto-char (point-min))
-      (while (setq pos (next-single-property-change (point) 'duration))
-        (goto-char pos)
-        (when (and (not (equal pos (point-at-eol)))
-                   (setq duration (org-get-at-bol 'duration)))
-          (let ((line-height (if (< duration 30) 1.0 (+ 0.5 (/ duration 60))))
-                (ov (make-overlay (point-at-bol) (1+ (point-at-eol)))))
-            (overlay-put ov 'face `(:background ,(car colors)
-                                                :foreground
-                                                ,(if background-dark-p "black" "white")))
-            (setq colors (cdr colors))
-            (overlay-put ov 'line-height line-height)
-            (overlay-put ov 'line-spacing (1- line-height))))))))
+;; ("i" "idea" entry (file "~/Nutstore/Notes/idea.org")
+;;  "* %? :IDEA:\n%U\n%a\n" :clock-resume t)
+;; ("r" "read" entry (file "~/Nutstore/Notes/read.org")
+;;  "* %? :READ:\n%U\n%a\n" :clock-resume t)
+;; ))
 
-(add-hook 'org-agenda-finalize-hook #'ljg/org-agenda-time-grid-spacing)
-=======
-         :empty-line 1
-         )
-        ("i" "idea" entry (file "~/Nutstore/Notes/idea.org")
-         "* %? :IDEA:\n%U\n%a\n" :clock-resume t)
-        ("r" "read" entry (file "~/Nutstore/Notes/read.org")
-         "* %? :READ:\n%U\n%a\n" :clock-resume t)
-        ))
->>>>>>> 8e1853cf37e70567e9132a56ea5999d935975d3a
+
+;; ;; agenda 里面时间块彩色显示
+;; ;; From: https://emacs-china.org/t/org-agenda/8679/3
+;; (defun ljg/org-agenda-time-grid-spacing ()
+;;   "Set different line spacing w.r.t. time duration."
+;;   (save-excursion
+;;     (let* ((background (alist-get 'background-mode (frame-parameters)))
+;;            (background-dark-p (string= background "dark"))
+;;            (colors (list "#1ABC9C" "#2ECC71" "#3498DB" "#9966ff"))
+;;            pos
+;;            duration)
+;;       (nconc colors colors)
+;;       (goto-char (point-min))
+;;       (while (setq pos (next-single-property-change (point) 'duration))
+;;         (goto-char pos)
+;;         (when (and (not (equal pos (point-at-eol)))
+;;                    (setq duration (org-get-at-bol 'duration)))
+;;           (let ((line-height (if (< duration 30) 1.0 (+ 0.5 (/ duration 60))))
+;;                 (ov (make-overlay (point-at-bol) (1+ (point-at-eol)))))
+;;             (overlay-put ov 'face `(:background ,(car colors)
+;;                                                 :foreground
+;;                                                 ,(if background-dark-p "black" "white")))
+;;             (setq colors (cdr colors))
+;;             (overlay-put ov 'line-height line-height)
+;;             (overlay-put ov 'line-spacing (1- line-height))))))))
+
+;; (add-hook 'org-agenda-finalize-hook #'ljg/org-agenda-time-grid-spacing)
+;; :empty-line 1
+;; )
+
 
 
 ;; agenda 里面时间块彩色显示
@@ -477,7 +452,7 @@ typical word processor."
 ;; 打开 org-indent mode
 (setq org-startup-indented t)
 
-<<<<<<< HEAD
+
 ;; 设置 bullet
 (condition-case nil
     (require 'org-bullets)
@@ -497,15 +472,6 @@ typical word processor."
                                ("HAND" . (:foreground "white" :background "#2E8B57"  :weight bold))
                                ("DONE" . (:foreground "white" :background "#3498DB" :weight bold))))
 
-=======
-;; 设置 bullet list
-
-;; (setq org-bullets-bullet-list '("" ""  "" ""))
-(setf org-todo-keyword-faces '(("TODO" . (:foreground "white" :background "#95A5A6"   :weight bold))
-                               ("HAND" . (:foreground "white" :background "#2E8B57"  :weight bold))
-                               ("DONE" . (:foreground "white" :background "#3498DB" :weight bold))))
-
->>>>>>> 8e1853cf37e70567e9132a56ea5999d935975d3a
 
 (require-package 'org-pomodoro)
 (setq org-pomodoro-keep-killed-pomodoro-time t)

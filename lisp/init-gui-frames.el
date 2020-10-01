@@ -29,9 +29,6 @@
 (when (fboundp 'set-scroll-bar-mode)
   (set-scroll-bar-mode nil))
 
-<<<<<<< HEAD
-(menu-bar-mode -1)
-=======
 ;; I generally prefer to hide the menu bar, but doing this on OS X
 ;; simply makes it update unreliably in GUI frames, so we make an
 ;; exception.
@@ -43,7 +40,7 @@
                                          1 0))))
   (when (fboundp 'menu-bar-mode)
     (menu-bar-mode -1)))
->>>>>>> 8e1853cf37e70567e9132a56ea5999d935975d3a
+
 
 (let ((no-border '(internal-border-width . 0)))
   (add-to-list 'default-frame-alist no-border)

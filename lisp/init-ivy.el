@@ -11,14 +11,10 @@
                   projectile-completion-system 'ivy
                   ivy-magic-tilde nil
                   ivy-dynamic-exhibit-delay-ms 150
-<<<<<<< HEAD
-                  ivy-use-selectable-prompt t)
-=======
                   ivy-use-selectable-prompt t
                   ivy-initial-inputs-alist
                   '((Man-completion-table . "^")
                     (woman . "^")))
->>>>>>> 8e1853cf37e70567e9132a56ea5999d935975d3a
 
     ;; IDO-style directory navigation
     (define-key ivy-minibuffer-map (kbd "RET") #'ivy-alt-done)
@@ -34,23 +30,12 @@
 
     (when (maybe-require-package 'diminish)
       (diminish 'ivy-mode)))
-<<<<<<< HEAD
-  (when (maybe-require-package 'ivy-rich)
-    (setq ivy-virtual-abbreviate 'abbreviate
-          ivy-rich-switch-buffer-align-virtual-buffer nil
-          ivy-rich-path-style 'abbrev)
-    (with-eval-after-load 'ivy
-      (setcdr (assq t ivy-format-functions-alist) #'ivy-format-function-line))
-    (add-hook 'ivy-mode-hook (lambda () (ivy-rich-mode ivy-mode)))))
-=======
-
   (defun sanityinc/enable-ivy-flx-matching ()
     "Make `ivy' matching work more like IDO."
     (interactive)
     (require-package 'flx)
     (setq-default ivy-re-builders-alist
                   '((t . ivy--regex-fuzzy)))))
->>>>>>> 8e1853cf37e70567e9132a56ea5999d935975d3a
 
 (when (maybe-require-package 'counsel)
   (setq-default counsel-mode-override-describe-bindings t)
@@ -86,21 +71,13 @@ instead."
                            (projectile-project-root)
                          (error default-directory)))))
             (funcall search-function initial-input dir)))))
-<<<<<<< HEAD
-    (with-eval-after-load 'ivy
-=======
     (after-load 'ivy
->>>>>>> 8e1853cf37e70567e9132a56ea5999d935975d3a
       (add-to-list 'ivy-height-alist (cons 'counsel-ag 20)))
     (global-set-key (kbd "M-?") 'sanityinc/counsel-search-project)))
 
 
 (when (maybe-require-package 'swiper)
-<<<<<<< HEAD
-  (with-eval-after-load 'ivy
-=======
   (after-load 'ivy
->>>>>>> 8e1853cf37e70567e9132a56ea5999d935975d3a
     (define-key ivy-mode-map (kbd "M-s /") 'swiper-thing-at-point)))
 
 

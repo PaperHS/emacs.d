@@ -3,17 +3,10 @@
 ;;; Code:
 
 (when (maybe-require-package 'elm-mode)
-<<<<<<< HEAD
-  (with-eval-after-load 'elm-mode
-    (diminish 'elm-indent-mode)
-    (with-eval-after-load 'company
-      (add-to-list 'company-backends 'company-elm))
-=======
   (after-load 'elm-mode
     (diminish 'elm-indent-mode)
     (after-load 'company
       (push 'company-elm company-backends))
->>>>>>> 8e1853cf37e70567e9132a56ea5999d935975d3a
     (when (executable-find "elm-format")
       (setq-default elm-format-on-save t)))
   (maybe-require-package 'elm-test-runner)

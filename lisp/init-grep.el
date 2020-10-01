@@ -9,11 +9,7 @@
   (setq-default locate-command "mdfind"))
 
 (require-package 'wgrep)
-<<<<<<< HEAD
-(with-eval-after-load 'grep
-=======
 (after-load 'grep
->>>>>>> 8e1853cf37e70567e9132a56ea5999d935975d3a
   (dolist (key (list (kbd "C-c C-q") (kbd "w")))
     (define-key grep-mode-map key 'wgrep-change-to-wgrep-mode)))
 

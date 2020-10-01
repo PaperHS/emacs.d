@@ -2,11 +2,8 @@
 ;;; Commentary:
 ;;; Code:
 
-<<<<<<< HEAD
-(with-eval-after-load 'sql
-=======
+
 (after-load 'sql
->>>>>>> 8e1853cf37e70567e9132a56ea5999d935975d3a
   ;; sql-mode pretty much requires your psql to be uncustomised from stock settings
   (add-to-list 'sql-postgres-options "--no-psqlrc"))
 
@@ -52,11 +49,7 @@ Fix for the above hasn't been released as of Emacs 25.2."
 
 
 (require-package 'sqlformat)
-<<<<<<< HEAD
-(with-eval-after-load 'sql
-=======
 (after-load 'sql
->>>>>>> 8e1853cf37e70567e9132a56ea5999d935975d3a
   (define-key sql-mode-map (kbd "C-c C-f") 'sqlformat))
 
 ;; Package ideas:
@@ -120,16 +113,9 @@ This command currently blocks the UI, sorry."
 
 
 ;; Submitted upstream as https://github.com/stanaka/dash-at-point/pull/28
-<<<<<<< HEAD
-(with-eval-after-load 'sql
-  (with-eval-after-load 'dash-at-point
-    (add-to-list 'dash-at-point-mode-alist '(sql-mode . "psql,mysql,sqlite,postgis"))))
-
-=======
 (after-load 'sql
   (after-load 'dash-at-point
     (add-to-list 'dash-at-point-mode-alist '(sql-mode . "psql,mysql,sqlite,postgis"))))
->>>>>>> 8e1853cf37e70567e9132a56ea5999d935975d3a
 
 (with-eval-after-load 'page-break-lines
   (add-to-list 'page-break-lines-modes 'sql-mode))

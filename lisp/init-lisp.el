@@ -50,29 +50,6 @@
     (with-current-buffer out-buffer-name
       (view-mode 1))))
 (advice-add 'pp-display-expression :after 'sanityinc/make-read-only)
-<<<<<<< HEAD
-
-
-
-(defun sanityinc/load-this-file ()
-  "Load the current file or buffer.
-The current directory is temporarily added to `load-path'.  When
-there is no current file, eval the current buffer."
-  (interactive)
-  (let ((load-path (cons default-directory load-path))
-        (file (buffer-file-name)))
-    (if file
-        (progn
-          (save-some-buffers nil (apply-partially 'derived-mode-p 'emacs-lisp-mode))
-          (load-file (buffer-file-name))
-          (message "Loaded %s" file))
-      (eval-buffer)
-      (message "Evaluated %s" (current-buffer)))))
-
-(with-eval-after-load 'lisp-mode
-  (define-key emacs-lisp-mode-map (kbd "C-c C-l") 'sanityinc/load-this-file))
-=======
->>>>>>> 8e1853cf37e70567e9132a56ea5999d935975d3a
 
 
 
@@ -265,11 +242,7 @@ there is no current file, eval the current buffer."
       (rainbow-mode)))
   (add-hook 'emacs-lisp-mode-hook 'sanityinc/enable-rainbow-mode-if-theme)
   (add-hook 'help-mode-hook 'rainbow-mode)
-<<<<<<< HEAD
-  (with-eval-after-load 'rainbow-mode
-=======
   (after-load 'rainbow-mode
->>>>>>> 8e1853cf37e70567e9132a56ea5999d935975d3a
     (diminish 'rainbow-mode)))
 
 
@@ -280,13 +253,8 @@ there is no current file, eval the current buffer."
 
 (when (maybe-require-package 'flycheck)
   (require-package 'flycheck-package)
-<<<<<<< HEAD
-  (with-eval-after-load 'flycheck
-    (with-eval-after-load 'elisp-mode
-=======
   (after-load 'flycheck
     (after-load 'elisp-mode
->>>>>>> 8e1853cf37e70567e9132a56ea5999d935975d3a
       (flycheck-package-setup))))
 
 
@@ -297,14 +265,6 @@ there is no current file, eval the current buffer."
 
 
 (maybe-require-package 'cl-libify)
-<<<<<<< HEAD
-
-
-(maybe-require-package 'flycheck-relint)
-
-
-=======
->>>>>>> 8e1853cf37e70567e9132a56ea5999d935975d3a
 
 (maybe-require-package 'cask-mode)
 

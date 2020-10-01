@@ -27,13 +27,8 @@
   (define-ibuffer-column size-h
     (:name "Size" :inline t)
     (file-size-human-readable (buffer-size))))
-<<<<<<< HEAD
 
 
-=======
-
-
->>>>>>> 8e1853cf37e70567e9132a56ea5999d935975d3a
 ;; Modify the default ibuffer-formats (toggle with `)
 (setq ibuffer-formats
       '((mark modified read-only vc-status-mini " "

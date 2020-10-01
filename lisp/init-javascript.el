@@ -17,11 +17,7 @@
 
 ;; Change some defaults: customize them to override
 (setq-default js2-bounce-indent-p nil)
-<<<<<<< HEAD
-(with-eval-after-load 'js2-mode
-=======
 (after-load 'js2-mode
->>>>>>> 8e1853cf37e70567e9132a56ea5999d935975d3a
   ;; Disable js2 mode's syntax error highlighting by default...
   (setq-default js2-mode-show-parse-errors nil
                 js2-mode-show-strict-warnings nil)
@@ -57,11 +53,7 @@
 
 ;;; Coffeescript
 
-<<<<<<< HEAD
-(with-eval-after-load 'coffee-mode
-=======
 (after-load 'coffee-mode
->>>>>>> 8e1853cf37e70567e9132a56ea5999d935975d3a
   (setq-default coffee-js-mode 'js2-mode
                 coffee-tab-width js-indent-level))
 
