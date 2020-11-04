@@ -55,9 +55,9 @@
 ;; We include the org repository for completeness, but don't normally
 ;; use it.
 ;; (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
-(add-to-list 'package-archives '("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/"))
-(add-to-list 'package-archives '("org" . "http://elpa.emacs-china.org/org/"))
-(add-to-list 'package-archives '("gun" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/"))
+;; (add-to-list 'package-archives '("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/"))
+;; (add-to-list 'package-archives '("org" . "http://elpa.emacs-china.org/org/"))
+;; (add-to-list 'package-archives '("gun" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/"))
 
 
 
