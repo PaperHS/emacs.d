@@ -9,10 +9,10 @@
 (setq debug-on-error t)
 
 
-(let ((minver "24.4"))
+(let ((minver "25.1"))
   (when (version< emacs-version minver)
     (error "Your Emacs is too old -- this config requires v%s or higher" minver)))
-(when (version< emacs-version "25.1")
+(when (version< emacs-version "26.1")
   (message "Your Emacs is old, and some functionality in this config will be disabled. Please upgrade if possible."))
 
 (setq package-check-signature nil)
@@ -70,8 +70,7 @@
 (require 'init-flycheck)
 
 (require 'init-recentf)
-(require 'init-smex)
-(require 'init-ivy)
+(require 'init-selectrum)
 (require 'init-hippie-expand)
 (require 'init-company)
 (require 'init-windows)
@@ -109,6 +108,8 @@
 (require 'init-ruby)
 (require 'init-rails)
 (require 'init-sql)
+(require 'init-ocaml)
+(require 'init-j)
 (require 'init-nim)
 (require 'init-rust)
 (require 'init-toml)
