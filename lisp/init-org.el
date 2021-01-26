@@ -461,12 +461,14 @@ typical word processor."
    (package-install 'org-bullets)
    (require 'use-package)))
 
-(setq org-bullets-bullet-list '(""  "" ">" ""))
+(setq org-bullets-bullet-list '("●" "■" "•"  "⁃"   "-" "☯" "✿" "☯" "✜" "☯" "◆" "☯" "▶"))
+
+(setq org-ellipsis "⤵")
 ;; (setq org-bullets-bullet-list '(" " " " " " " " ))
-(set-face-attribute 'org-level-1 nil :height 200 :bold t)
-(set-face-attribute 'org-level-2 nil :height 180 :bold t)
-(set-face-attribute 'org-level-3 nil :height 160 :bold t)
-(set-face-attribute 'org-level-4 nil :height 140 :bold t)
+;; (set-face-attribute 'org-level-1 nil :height 140 :bold t)
+;; (set-face-attribute 'org-level-2 nil :height 140 :bold t)
+;; (set-face-attribute 'org-level-3 nil :height 140 :bold t)
+;; (set-face-attribute 'org-level-4 nil :height 140 :bold t)
 
 (setf org-todo-keyword-faces '(("TODO" . (:foreground "white" :background "#95A5A6"   :weight bold))
                                ("HAND" . (:foreground "white" :background "#2E8B57"  :weight bold))

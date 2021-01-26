@@ -75,7 +75,7 @@
 (require 'init-hippie-expand)
 (require 'init-company)
 (require 'init-windows)
-(require 'init-sessions)
+;; (require 'init-sessions)
 (require 'init-mmm)
 
 (require 'init-editing-utils)
@@ -124,8 +124,8 @@
 (require 'init-paredit)
 (require 'init-lisp)
 (require 'init-slime)
-;;(require 'init-clojure)
-;;(require 'init-clojure-cider)
+;; (require 'init-clojure)
+;; (require 'init-clojure-cider)
 (require 'init-common-lisp)
 
 (when *spell-check-support-enabled*
