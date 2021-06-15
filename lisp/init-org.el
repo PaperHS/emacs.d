@@ -140,7 +140,33 @@ typical word processor."
 ;;; Capturing
 
 (global-set-key (kbd "C-c c") 'org-capture)
+(setq org-roam-capture-templates
+      `(
+        ("d" "default" plain (function org-roam--capture-get-point)
+         "%?"
+         :file-name "%<%Y%m%d%H%M%S>-${slug}"
+         :head "#+title: ${title}\n#+roam_tags:\n* ${title}"
+         :unnarrowed t)
+        ("g" "game-thoery" plain (function org-roam--capture-get-point)
+         "%?"
+         :file-name "%<%Y%m%d%H%M%S>-gto/${slug}"
+         :head "#+title: ${title}\n#+roam_tags: GTO GameTheory\n* ${title}"
+         :unnarrowed t)
 
+        )
+      )
+
+(setq org-roam-dailies-capture-templates
+      '(("d" "default" entry
+         #'org-roam-capture--get-point
+         "* %?"
+         :file-name "daily/%<%Y-%m-%d>"
+         :head "#+title: %<%Y-%m-%d>\n\n
+* Family\n\n
+* Indie\n\n
+* Job\n\n
+* Language\n\n
+")))
 ;; (setq org-capture-templates
 ;;       `(("t" "todo" entry (file "~/Nutstore/Notes/todo.org")   "* TODO   %?\n%U\n" :clock-resume t)
 ;;         ("n" "note" entry (file "~/Nutstore/Notes/note.org")   "* %? :NOTE:  \n%U\n%a\n  \n:PROPERTIES:\n:ANKI_DECK: Note\n:ANKI_NOTE_TYPE: Basic (and reversed card)\n:ANKI_TAGS:\n:END:\n** Front\n ** Back\n" :clock-resume t)
@@ -461,9 +487,9 @@ typical word processor."
    (package-install 'org-bullets)
    (require 'use-package)))
 
-(setq org-bullets-bullet-list '("●" "■" "•"  "⁃"   "-" "☯" "✿" "☯" "✜" "☯" "◆" "☯" "▶"))
+(setq org-bullets-bullet-list '("☻" "≫" "⇒" "•"  "⁃"   "-" "☯" "✿" "☯" "✜" "☯" "◆" "☯" "▶"))
 
-(setq org-ellipsis "⤵")
+;; (setq org-ellipsis "⤵")
 ;; (setq org-bullets-bullet-list '(" " " " " " " " ))
 ;; (set-face-attribute 'org-level-1 nil :height 140 :bold t)
 ;; (set-face-attribute 'org-level-2 nil :height 140 :bold t)

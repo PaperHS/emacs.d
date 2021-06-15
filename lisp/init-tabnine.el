@@ -1,0 +1,5 @@
+(use-package company-tabnine :ensure t)
+(add-to-list 'company-backends #'company-tabnine)
+(setq company-idle-delay 0)
+(setq company-show-numbers t)
+(provide 'init-tabnine)

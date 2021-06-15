@@ -244,34 +244,6 @@
   (diminish 'whole-line-or-region-local-mode))
 
 
-<<<<<<< HEAD
-;; Some local minor modes clash with CUA rectangle selection
-
-(defvar-local sanityinc/suspended-modes-during-cua-rect nil
-  "Modes that should be re-activated when cua-rect selection is done.")
-
-(eval-after-load 'cua-rect
-  (advice-add 'cua--deactivate-rectangle :after
-              (lambda (&rest _)
-                (dolist (m sanityinc/suspended-modes-during-cua-rect)
-                  (funcall m 1)
-                  (setq sanityinc/suspended-modes-during-cua-rect nil)))))
-
-(defun sanityinc/suspend-mode-during-cua-rect-selection (mode-name)
-  "Add an advice to suspend `MODE-NAME' while selecting a CUA rectangle."
-  (eval-after-load 'cua-rect
-    (advice-add 'cua--activate-rectangle :after
-                (lambda (&rest _)
-                  (when (bound-and-true-p mode-name)
-                    (push mode-name sanityinc/suspended-modes-during-cua-rect)
-                    (funcall mode-name 0))))))
-
-(sanityinc/suspend-mode-during-cua-rect-selection 'whole-line-or-region-local-mode)
-
-
-
-=======
->>>>>>> purcell/master
 
 (defun sanityinc/open-line-with-reindent (n)
   "A version of `open-line' which reindents the start and end positions.

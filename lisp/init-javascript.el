@@ -69,16 +69,9 @@
 
 ;;; Coffeescript
 
-<<<<<<< HEAD
-(after-load 'coffee-mode
-  (setq-default coffee-js-mode 'js2-mode
-                coffee-tab-width js-indent-level))
-=======
 (when (maybe-require-package 'coffee-mode)
   (with-eval-after-load 'coffee-mode
     (setq-default coffee-tab-width js-indent-level))
->>>>>>> purcell/master
-
   (when (fboundp 'coffee-mode)
     (add-to-list 'auto-mode-alist '("\\.coffee\\.erb\\'" . coffee-mode))))
 

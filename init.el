@@ -141,7 +141,8 @@
 ;; (require 'init-mu)
 (require 'init-ledger)
 ;; Extra packages which don't require any configuration
-
+(require 'init-swift)
+(require 'init-tabnine)
 (require 'init-lsp-dart)
 
 (require-package 'sudo-edit)
